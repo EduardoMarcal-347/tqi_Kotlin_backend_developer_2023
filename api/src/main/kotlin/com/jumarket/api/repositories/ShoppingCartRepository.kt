@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface ShoppinCartRepository: JpaRepository<ShoppingCart, Long> {
+interface ShoppingCartRepository: JpaRepository<ShoppingCart, Long> {
 }
