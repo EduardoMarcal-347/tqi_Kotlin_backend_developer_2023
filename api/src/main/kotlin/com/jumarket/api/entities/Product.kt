@@ -21,7 +21,7 @@ data class Product (
     var price: Long,
 
     @ManyToOne
-    @Column(name = "category_id", nullable = false)
+    @JoinColumn(name = "category_id")
     val category: Category
 
 )
