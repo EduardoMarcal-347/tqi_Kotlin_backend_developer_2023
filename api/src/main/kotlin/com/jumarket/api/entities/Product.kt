@@ -11,13 +11,13 @@ data class Product (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
 
-    @Column(name = "product_name", nullable = false, length = 40)
+    @Column(nullable = false)
     var name: String,
 
-    @Column(name = "measure_unit", nullable = false)
+    @Column(nullable = false)
     val measureUnit: MeasureUnit,
 
-    @Column(name = "price", nullable = false)
+    @Column(nullable = false)
     var price: Long,
 
     @ManyToOne
