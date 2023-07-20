@@ -1,26 +1,24 @@
 package com.jumarket.api.entities
 
-import com.jumarket.api.enums.MeasureUnit
 import jakarta.persistence.*
 
 @Entity
-@Table(name = "tb_product")
-data class Product (
+@Table(name = "tb_shopping_cart_product")
+data class ShoppingCartProduct (
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
 
     @Column(nullable = false)
-    var name: String,
+    val shoppingCartId: Long,
 
     @Column(nullable = false)
-    val measureUnit: MeasureUnit,
+    val productId: Long,
 
     @Column(nullable = false)
-    var price: Long,
+    val amount: Int,
 
-    @ManyToOne
-    val category: Category
-
+    @Column(nullable = false)
+    val totalPrice: Long
 )

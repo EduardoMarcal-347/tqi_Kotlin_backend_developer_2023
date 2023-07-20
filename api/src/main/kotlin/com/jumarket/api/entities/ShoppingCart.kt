@@ -11,9 +11,9 @@ data class ShoppingCart(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
 
-    @Column(name = "total_price")
+    @Column(nullable = false)
     var totalPrice: Double,
 
-    @Column(name = "payment_method")
+    @Column(nullable = false)
     var paymentMethod: PaymentMethod
 )
