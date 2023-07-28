@@ -1,7 +1,9 @@
 package com.jumarket.api.controllers
 
+import com.jumarket.api.dto.request.CategoryDTO
 import com.jumarket.api.entities.Category
 import com.jumarket.api.repositories.CategoryRepository
+import com.jumarket.api.services.CategoryService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.media.ArraySchema
 import io.swagger.v3.oas.annotations.media.Content
@@ -17,13 +19,13 @@ import java.util.*
 @RequestMapping("api/v1/category")
 @Tag(name = "Category", description = "Endpoint for managing categories.")
 class CategoryController (
-    @Autowired val repository: CategoryRepository
+    @Autowired val repository: CategoryRepository,
+    @Autowired val service: CategoryService
 ){
 
-
     @GetMapping
-    fun findAll() : List<Category>{
-        return repository.findAll();
+    fun findAll() : List<CategoryDTO>{
+        return service.findAll();
     }
 
     @GetMapping(value = ["/{id}"])
