@@ -29,17 +29,17 @@ class CategoryController (
     }
 
     @GetMapping(value = ["/{id}"])
-    fun findById(@PathVariable id: Long): Optional<Category> {
-        return repository.findById(id);
+    fun findById(@PathVariable id: Long): CategoryDTO {
+        return service.findById(id);
     }
 
     @PutMapping(value = ["/{id}"])
-    fun update(@PathVariable id: Long, @RequestBody category: Category /*dto*/){
-        //service
+    fun update(@PathVariable id: Long, @RequestBody category: CategoryDTO){
+        return service.update(id, category)
     }
 
     @DeleteMapping(value = ["/{id}"])
     fun deleteById(@PathVariable id: Long) {
-        repository.deleteById(id);
+        return service.deleteById(id);
     }
 }
