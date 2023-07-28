@@ -11,7 +11,6 @@ import java.util.*
 @RestController
 @RequestMapping("api/v1/product")
 class ProductController(
-    @Autowired val repository: ProductRepository,
     @Autowired val service: ProductService
 ) {
     @GetMapping
@@ -26,11 +25,11 @@ class ProductController(
 
     @PutMapping(value = ["/{id}"])
     fun update(@PathVariable id: Long, @RequestBody product: ProductDTO){
-        //service
+        return service.update(id, product);
     }
 
     @DeleteMapping(value = ["/{id}"])
     fun deleteById(@PathVariable id: Long) {
-        repository.deleteById(id);
+        return service.deleteById(id);
     }
 }
