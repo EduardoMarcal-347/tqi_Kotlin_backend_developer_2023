@@ -17,6 +17,9 @@ data class ShoppingCartProduct (
     val productId: Long,
 
     @Column(nullable = false)
+    val productName: String,
+
+    @Column(nullable = false)
     val amount: Int,
 
     @Column(nullable = false)
