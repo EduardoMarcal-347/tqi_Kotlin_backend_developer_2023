@@ -18,7 +18,7 @@ class CategoryService(
     }
 
     fun findById(id: Long) : CategoryDTO {
-        val category: Category = repository.findById(id).orElseThrow(); /* tratar erro*/
+        val category: Category = repository.findById(id).orElseThrow{BusinessException("Id não Existente")};
         return CategoryDTO(category);
     }
 
@@ -29,13 +29,13 @@ class CategoryService(
     }
 
     fun update(id: Long, categoryDTO: CategoryDTO) {
-        val categoryToUpdate = repository.findById(id).orElseThrow(); /* tratar erro*/
+        val categoryToUpdate = repository.findById(id).orElseThrow{BusinessException("Id não Existente")};
         categoryToUpdate.update(categoryDTO);
         repository.save(categoryToUpdate);
     }
 
     fun deleteById(id: Long) {
-        val category = repository.findById(id).orElseThrow(); /* tratar erro*/
+        val category = repository.findById(id).orElseThrow{BusinessException("Id não Existente")};
         repository.delete(category);
     }
 

@@ -20,7 +20,7 @@ ProductService(
     }
 
     fun findById(id: Long) : ProductDTO {
-        val product: Product = repository.findById(id).orElseThrow(); /* tratar erro*/
+        val product: Product = repository.findById(id).orElseThrow{BusinessException("Id não Existente")};
         return ProductDTO(product);
     }
 
@@ -31,13 +31,13 @@ ProductService(
     }
 
     fun update(id: Long, productDTO: ProductDTO) {
-        val productToUpdate = repository.findById(id).orElseThrow(); /* tratar erro*/
+        val productToUpdate = repository.findById(id).orElseThrow{BusinessException("Id não Existente")};
         productToUpdate.update(productDTO);
         repository.save(productToUpdate);
     }
 
     fun deleteById(id: Long) {
-        val product = repository.findById(id).orElseThrow(); /* tratar erro*/
+        val product = repository.findById(id).orElseThrow{BusinessException("Id não Existente")};
         repository.delete(product);
     }
 
