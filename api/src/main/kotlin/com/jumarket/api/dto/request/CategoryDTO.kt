@@ -8,4 +8,5 @@ data class CategoryDTO (
     constructor(entity: Category): this(
         name = entity.name
     )
+
 }

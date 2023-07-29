@@ -3,6 +3,7 @@ package com.jumarket.api.services
 import com.jumarket.api.dto.request.CategoryDTO
 import com.jumarket.api.entities.Category
 import com.jumarket.api.repositories.CategoryRepository
+import com.jumarket.api.services.exceptions.BusinessException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -19,6 +20,12 @@ class CategoryService(
     fun findById(id: Long) : CategoryDTO {
         val category: Category = repository.findById(id).orElseThrow(); /* tratar erro*/
         return CategoryDTO(category);
+    }
+
+    fun insert(category: Category): Category {
+        if(repository.findById(category.id).isPresent){
+            throw BusinessException("Categoria Existente!");
+        } else return repository.save(category);
     }
 
     fun update(id: Long, categoryDTO: CategoryDTO) {

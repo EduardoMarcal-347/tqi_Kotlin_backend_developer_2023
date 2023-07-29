@@ -3,11 +3,14 @@ package com.jumarket.api.services
 import com.jumarket.api.dto.request.ProductDTO
 import com.jumarket.api.entities.Product
 import com.jumarket.api.repositories.ProductRepository
+import com.jumarket.api.services.exceptions.BusinessException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class ProductService(
+class
+
+ProductService(
     @Autowired private val repository: ProductRepository
 ){
 
@@ -19,6 +22,12 @@ class ProductService(
     fun findById(id: Long) : ProductDTO {
         val product: Product = repository.findById(id).orElseThrow(); /* tratar erro*/
         return ProductDTO(product);
+    }
+
+    fun insert(product: Product): Product {
+        if(repository.findById(product.id).isPresent){
+            throw BusinessException("Produto Existente!");
+        } else return repository.save(product);
     }
 
     fun update(id: Long, productDTO: ProductDTO) {

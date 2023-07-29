@@ -10,18 +10,18 @@ data class ShoppingCartProduct (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
 
-    @Column(nullable = false)
+    @Column
     val shoppingCartId: Long,
 
-    @Column(nullable = false)
+    @Column
     val productId: Long,
 
-    @Column(nullable = false)
+    @Column
     val productName: String,
 
-    @Column(nullable = false)
+    @Column
     val amount: Int,
 
-    @Column(nullable = false)
+    @Column
     val totalPrice: Long
 )

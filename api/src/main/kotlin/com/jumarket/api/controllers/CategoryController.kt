@@ -4,14 +4,8 @@ import com.jumarket.api.dto.request.CategoryDTO
 import com.jumarket.api.entities.Category
 import com.jumarket.api.repositories.CategoryRepository
 import com.jumarket.api.services.CategoryService
-import io.swagger.v3.oas.annotations.Operation
-import io.swagger.v3.oas.annotations.media.ArraySchema
-import io.swagger.v3.oas.annotations.media.Content
-import io.swagger.v3.oas.annotations.media.Schema
-import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
@@ -31,6 +25,11 @@ class CategoryController (
     @GetMapping(value = ["/{id}"])
     fun findById(@PathVariable id: Long): CategoryDTO {
         return service.findById(id);
+    }
+
+    @PostMapping
+    fun insert(@RequestBody category: Category): Category{
+        return service.insert(category);
     }
 
     @PutMapping(value = ["/{id}"])

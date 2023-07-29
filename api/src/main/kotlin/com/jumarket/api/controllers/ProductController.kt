@@ -2,7 +2,6 @@ package com.jumarket.api.controllers
 
 import com.jumarket.api.dto.request.ProductDTO
 import com.jumarket.api.entities.Product
-import com.jumarket.api.repositories.ProductRepository
 import com.jumarket.api.services.ProductService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
@@ -26,6 +25,11 @@ class ProductController(
     @PutMapping(value = ["/{id}"])
     fun update(@PathVariable id: Long, @RequestBody product: ProductDTO){
         return service.update(id, product);
+    }
+
+    @PostMapping
+    fun insert(@RequestBody product: Product): Product {
+        return service.insert(product);
     }
 
     @DeleteMapping(value = ["/{id}"])
