@@ -23,7 +23,7 @@ class ProductController(
     }
 
     @PutMapping(value = ["/{id}"])
-    fun update(@PathVariable id: Long, @RequestBody product: ProductDTO){
+    fun update(@PathVariable id: Long, @RequestBody product: ProductDTO): Product{
         return service.update(id, product);
     }
 
