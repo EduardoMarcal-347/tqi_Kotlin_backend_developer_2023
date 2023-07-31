@@ -20,8 +20,8 @@ data class ShoppingCartProduct (
     val productName: String,
 
     @Column
-    val amount: Int,
+    var amount: Int,
 
     @Column
-    val totalPrice: Long
+    val price: Double
 )

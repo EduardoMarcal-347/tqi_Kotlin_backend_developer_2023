@@ -30,10 +30,10 @@ ProductService(
         } else return repository.save(product);
     }
 
-    fun update(id: Long, productDTO: ProductDTO) {
+    fun update(id: Long, productDTO: ProductDTO): Product {
         val productToUpdate = repository.findById(id).orElseThrow{BusinessException("Id não Existente")};
         productToUpdate.update(productDTO);
-        repository.save(productToUpdate);
+        return repository.save(productToUpdate);
     }
 
     fun deleteById(id: Long) {

@@ -28,10 +28,10 @@ class CategoryService(
         } else return repository.save(category);
     }
 
-    fun update(id: Long, categoryDTO: CategoryDTO) {
+    fun update(id: Long, categoryDTO: CategoryDTO): Category {
         val categoryToUpdate = repository.findById(id).orElseThrow{BusinessException("Id não Existente")};
         categoryToUpdate.update(categoryDTO);
-        repository.save(categoryToUpdate);
+        return repository.save(categoryToUpdate);
     }
 
     fun deleteById(id: Long) {
