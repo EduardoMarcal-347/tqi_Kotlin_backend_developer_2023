@@ -33,7 +33,7 @@ class CategoryController (
     }
 
     @PutMapping(value = ["/{id}"])
-    fun update(@PathVariable id: Long, @RequestBody category: CategoryDTO){
+    fun update(@PathVariable id: Long, @RequestBody category: CategoryDTO): Category{
         return service.update(id, category)
     }
 
