@@ -1,5 +1,6 @@
 package com.jumarket.api.entities
 
+import com.jumarket.api.dto.request.CategoryDTO
 import jakarta.persistence.*
 
 @Entity
@@ -13,4 +14,8 @@ data class Category (
     @Column(nullable = false)
     var name: String
 
-)
+) {
+    fun update(entity: CategoryDTO) {
+        this.name = entity.name
+    }
+}

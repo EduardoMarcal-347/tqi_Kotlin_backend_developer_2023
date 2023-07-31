@@ -1,5 +1,6 @@
 package com.jumarket.api.entities
 
+import com.jumarket.api.dto.request.ProductDTO
 import com.jumarket.api.enums.MeasureUnit
 import jakarta.persistence.*
 
@@ -15,12 +16,19 @@ data class Product (
     var name: String,
 
     @Column(nullable = false)
-    val measureUnit: MeasureUnit,
+    var measureUnit: MeasureUnit,
 
     @Column(nullable = false)
     var price: Long,
 
     @ManyToOne
-    val category: Category
+    var category: Category
 
-)
+){
+    fun update(productDTO: ProductDTO) {
+        this.name = productDTO.name;
+        this.measureUnit = productDTO.measureUnit;
+        this.price = productDTO.price;
+        this.category = productDTO.category
+    }
+}
